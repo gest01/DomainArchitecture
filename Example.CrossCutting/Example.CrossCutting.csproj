@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ObjectServices.cs" />
     <Compile Include="DataAccess\IDbContext.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\IUnitOfWork.cs" />
     <Compile Include="DataAccess\Repository.cs" />
+    <Compile Include="Logging\Default\DefaultLogger.cs" />
+    <Compile Include="Logging\Default\DefaultLoggerFactory.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\LoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
