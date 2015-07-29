@@ -6,6 +6,7 @@ namespace Example.DataAccess
     internal class ExampleRepository<TEntity> : ConcreteExampleRepository<TEntity> where TEntity : class
     {
         public ExampleRepository(IDbContext context)
-            : base(context)  {  }
+            : base(context)  {
+        }
     }
 }

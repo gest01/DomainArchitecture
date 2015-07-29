@@ -53,11 +53,12 @@ namespace Example.CrossCutting.DataAccess
             return
                 from type in types
                 let baseType = type.BaseType
-                where !type.IsAbstract &&
-                      !type.IsInterface && baseType != null &&
-                      baseType.IsGenericType &&
-                      baseType.GetGenericTypeDefinition() == typeof(Repository<>) &&
-                      baseType.GetGenericArguments().Contains(entityType)
+                where !type.IsAbstract 
+                      && !type.IsInterface
+                      && baseType != null 
+                      && baseType.IsGenericType 
+                      && baseType.GetGenericTypeDefinition() == typeof(Repository<>)
+                      && baseType.GetGenericArguments().Contains(entityType)
 
                 select type;
         }

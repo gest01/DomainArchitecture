@@ -8,10 +8,12 @@ namespace Example.CrossCutting.DataAccess
     {
         public Repository(IDbContext context)
         {
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
 
+            Context = context;
         }
 
-        /// <summary>Liefert den Db Context</summary>
 		protected IDbContext Context { get; private set; }
 
         public virtual IQueryable<TEntity> Query(bool tracking = true)

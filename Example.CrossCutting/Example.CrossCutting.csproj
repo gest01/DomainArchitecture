@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CacheFactory.cs" />
+    <Compile Include="Caching\Default\DefaultCache.cs" />
+    <Compile Include="Caching\Default\DefaultCacheFactory.cs" />
+    <Compile Include="Caching\ICache.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="ObjectServices.cs" />
     <Compile Include="DataAccess\IDbContext.cs" />
