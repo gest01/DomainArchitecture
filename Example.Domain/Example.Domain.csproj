@@ -41,9 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ConcreteExampleRepository.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Example.CrossCutting\Example.CrossCutting.csproj">
+      <Project>{e5efe6ad-75fa-4070-ac4f-ac97002b51fe}</Project>
+      <Name>Example.CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
