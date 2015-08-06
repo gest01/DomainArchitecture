@@ -14,9 +14,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{C8D48DA0-EACD-48CF-BFF5-E5518AFC1018}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Api", "Example.Api\Example.Api.csproj", "{634521FC-42A8-46D0-9842-B5A3E572D4D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Web", "Example.Web\Example.Web.csproj", "{440C96E0-EEF4-42ED-9BB2-47A02D5F552E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +47,10 @@ Global
 		{634521FC-42A8-46D0-9842-B5A3E572D4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634521FC-42A8-46D0-9842-B5A3E572D4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634521FC-42A8-46D0-9842-B5A3E572D4D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440C96E0-EEF4-42ED-9BB2-47A02D5F552E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440C96E0-EEF4-42ED-9BB2-47A02D5F552E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440C96E0-EEF4-42ED-9BB2-47A02D5F552E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440C96E0-EEF4-42ED-9BB2-47A02D5F552E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

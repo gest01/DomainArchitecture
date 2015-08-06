@@ -12,5 +12,11 @@ namespace Example.CrossCutting.Security
         /// </summary>
         public const String Language = "http://identity/claims/language";
 
+
+        /// <summary>
+        /// http://identity/claims/userid
+        /// </summary>
+        public const String UserId = "http://identity/claims/userid";
+
     }
 }

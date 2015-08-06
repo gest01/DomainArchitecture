@@ -7,32 +7,31 @@ namespace Example.CrossCutting.Security
 {
     public static class PrincipalExtensions
     {
-        /// <summary>
-        /// Liefert TRUE, falls der Benutzer Zugriff auf die Applikation hat, sonst false
-        /// </summary>
-        /// <param name="user">Benutzer</param>
-        /// <returns>True falls Read Permission vorhanden, sonst false </returns>
         public static bool CanRead(this IPrincipal user)
         {
-            return user.HasUserPermission(); // Es werden mindestens User Berechtigungen für den Zugriff benötigt.
+            return user.HasUserPermission();
         }
 
+        public static String GetUserId(this IPrincipal principal)
+        {
+            return GetClaim(principal, CustomClaims.UserId).Value;
+        }
 
-        /// <summary>
-        /// Liefert den DisplayNamen. Bsp. Peter Meier
-        /// </summary>
-        /// <param name="principal">IPrincipal</param>
-        /// <returns>DisplayNamen</returns>
+        public static String GetLanguage(this IPrincipal principal)
+        {
+            return GetClaim(principal, CustomClaims.Language).Value;
+        }
+
+        public static String GetEmail(this IPrincipal principal)
+        {
+            return GetClaim(principal, ClaimTypes.Email).Value;
+        }
+
         public static String GetDisplayName(this IPrincipal principal)
         {
             return GetClaim(principal, ClaimTypes.GivenName).Value;
         }
 
-        /// <summary>
-        /// Liefert TRUE falls der Benutzer ein Administrator ist, sonst FALSE
-        /// </summary>
-        /// <param name="user">IPrincipal</param>
-        /// <returns>True / False</returns>
         public static bool IsAdmin(this IPrincipal user)
         {
             if (user.Identity.IsAuthenticated)
@@ -44,31 +43,23 @@ namespace Example.CrossCutting.Security
             return false;
         }
 
-        /// <summary>
-        /// Liefert TRUE falls der Benutzer ein normaler User ist, sonst FALSE
-        /// </summary>
-        /// <param name="user">IPrincipal</param>
-        /// <returns>True / False</returns>
         public static bool IsUser(this IPrincipal user)
         {
             if (user.Identity.IsAuthenticated)
             {
-                if (Permissions.Users.Length > 0 && Permissions.Users.Contains(user.Identity.Name, StringComparer.OrdinalIgnoreCase))
-                    return true;
+                return true;
 
-                if (Permissions.UserGroups.Length > 0 && Permissions.UserGroups.Any(user.IsInRole))
-                    return true;
+                // TODO Check for Roles / Groups etc..
+                //if (Permissions.Users.Length > 0 && Permissions.Users.Contains(user.Identity.Name, StringComparer.OrdinalIgnoreCase))
+                //    return true;
+
+                //if (Permissions.UserGroups.Length > 0 && Permissions.UserGroups.Any(user.IsInRole))
+                //    return true;
             }
 
             return false;
         }
 
-
-        /// <summary>
-        /// Liefert TRUE falls der Benutzer User, SuperUser oder Admin ist
-        /// </summary>
-        /// <param name="user">IPrincipal</param>
-        /// <returns>True / False</returns>
         public static bool HasUserPermission(this IPrincipal user)
         {
             return user.IsUser() || user.IsAdmin();

@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Example.Application")]
+[assembly: AssemblyTitle("Example.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("a935cc79-88a3-4c06-9df7-3b144bf7b592")]
+[assembly: Guid("440c96e0-eef4-42ed-9bb2-47a02d5f552e")]

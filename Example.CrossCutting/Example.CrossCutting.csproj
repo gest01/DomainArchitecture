@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Caching\CacheFactory.cs" />
     <Compile Include="Caching\Default\DefaultCache.cs" />
     <Compile Include="Caching\Default\DefaultCacheFactory.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
+    <Compile Include="EnvironmentUtil.cs" />
+    <Compile Include="Logging\LogLevels.cs" />
     <Compile Include="ObjectServices.cs" />
     <Compile Include="DataAccess\IDbContext.cs" />
     <Compile Include="DataAccess\IRepository.cs" />

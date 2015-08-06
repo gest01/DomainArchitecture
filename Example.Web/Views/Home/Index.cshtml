@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Page not found", "ActionDoesNotExist")
+
+@Html.ActionLink("Unhandled Exception", "UnhandledException")
+
+@Html.ActionLink("Not authorized", "Index", "Admin")
