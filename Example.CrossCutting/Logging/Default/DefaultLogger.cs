@@ -37,14 +37,16 @@ namespace Example.CrossCutting.Logging.Default
 
         private void WriteLog(LogLevels level, String message)
         {
-            String logMessage = String.Format("{0} | {1} | {2} | {3} | {4}",
-                level.ToString(),
-                DateTime.Now.ToLongTimeString(),
-                DateTime.Now.ToShortDateString(),
-                _loggername,
-                message);
+            LogMessage lm = new LogMessage()
+            {
+                User = System.Threading.Thread.CurrentPrincipal.Identity.Name,
+                LoggerName = _loggername,
+                LogLevel = level,
+                TimeStamp = DateTime.Now,
+                Message = message
+            };
 
-            Trace.WriteLine(logMessage);
+            Trace.WriteLine( LogMessageFormatter.Default.Format(lm) );
         }
     }
 }

@@ -23,6 +23,13 @@ namespace Example.Web
             WebMvc.Configure();
         }
 
+#if DEBUG
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            _log.Debug("{0} -> {1}", Request.HttpMethod, Request.Url.AbsoluteUri);
+        }
+#endif
+
         protected void Application_End(object sender, EventArgs e)
         {
             _log.Info("*** Application End  ***");
