@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace Example.Web.Common
@@ -9,6 +10,7 @@ namespace Example.Web.Common
         {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
@@ -38,6 +40,31 @@ namespace Example.Web.Common
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+        }
+    }
+
+    internal class BundleConfig
+    {
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
+                "~/Content/bootstrap.css"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts")
+                .Include(
+                     "~/Scripts/jquery-{version}.js",
+                     "~/Scripts/bootstrap.js")
+                );
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                     "~/Scripts/angular.js",
+                     "~/Scripts/angular-resource.js",
+                     "~/Scripts/angular-ui-router.js",
+                     "~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app")
+                .IncludeDirectory("~/app", "*.js", true));
         }
     }
 }
