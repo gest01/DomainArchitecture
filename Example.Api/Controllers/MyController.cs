@@ -1,6 +1,12 @@
-﻿namespace Example.Api.Controllers
+﻿using System.Web.Http;
+
+namespace Example.Api.Controllers
 {
     public class MyController : ApiBaseController
     {
+        public IHttpActionResult Get()
+        {
+            return Ok("Hello, World!");
+        }
     }
 }
