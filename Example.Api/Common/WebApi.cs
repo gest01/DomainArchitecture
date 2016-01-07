@@ -12,7 +12,6 @@ namespace Example.Api.Common
         public static void Configure()
         {
             GlobalConfiguration.Configure(ConfigureApi);
-            GlobalConfiguration.Configure(ConfigureApi);
         }
 
         private static void ConfigureApi(HttpConfiguration config)
