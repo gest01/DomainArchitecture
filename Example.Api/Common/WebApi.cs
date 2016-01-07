@@ -35,6 +35,7 @@ namespace Example.Api.Common
                 IgnoreSerializableAttribute = true // Serializable-Attribute auf den DTO's sind für Json irrelevant
             };
 
+
             // http://www.asp.net/web-api/overview/formats-and-model-binding/json-and-xml-serialization#json_dates
             // http://stackoverflow.com/a/28732833
             serializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
