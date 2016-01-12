@@ -16,7 +16,7 @@ namespace Example.CrossCutting.DataAccess
         /// </summary>
         /// <param name="tracking"></param>
         /// <returns>IQueryable</returns>
-        IQueryable<TEntity> Query(bool tracking = true);
+        IQueryable<TEntity> Query(bool tracking = false);
 
         /// <summary>
         /// Liefert eine Entität mit bestimmten Primary Keys oder NULL falls die Entität nicht gefunden werden konnte.

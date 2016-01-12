@@ -16,7 +16,7 @@ namespace Example.CrossCutting.DataAccess
 
 		protected IDbContext Context { get; private set; }
 
-        public virtual IQueryable<TEntity> Query(bool tracking = true)
+        public virtual IQueryable<TEntity> Query(bool tracking = false)
         {
             return Context.Query<TEntity>(tracking);
         }
