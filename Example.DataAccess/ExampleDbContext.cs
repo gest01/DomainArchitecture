@@ -1,65 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Example.CrossCutting.DataAccess;
 
 namespace Example.DataAccess
 {
-    internal class ExampleDbContext : IDbContext
+    internal class ExampleDbContext : DbContext, IDbContext
     {
+
+        public ExampleDbContext(string nameOrConnectionString)
+            :base(nameOrConnectionString)  {  }
+
+        static ExampleDbContext()
+        {
+            Database.SetInitializer<ExampleDbContext>(null);
+        }
+
         public bool HasChanges
         {
             get
             {
-                throw new NotImplementedException();
+                return this.ChangeTracker.Entries().Any(f => f.State == EntityState.Added)
+                    || this.ChangeTracker.Entries().Any(f => f.State == EntityState.Deleted)
+                    || this.ChangeTracker.Entries().Any(f => f.State == EntityState.Modified);
             }
         }
 
         public void Delete<TEntity>(TEntity entity) where TEntity : class
         {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            this.Delete<TEntity>(entity);
         }
 
         public TEntity Find<TEntity>(params object[] keyValues) where TEntity : class
         {
-            throw new NotImplementedException();
+            return this.Find<TEntity>(keyValues);
         }
 
         public void Insert<TEntity>(TEntity entity) where TEntity : class
         {
-            throw new NotImplementedException();
+            this.Insert<TEntity>(entity);
         }
 
         public void InsertRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
         {
-            throw new NotImplementedException();
+            this.InsertRange<TEntity>(entities);
         }
 
         public IQueryable<TEntity> Query<TEntity>(bool tracking = true) where TEntity : class
         {
-            throw new NotImplementedException();
-        }
-
-        public int SaveChanges()
-        {
-            throw new NotImplementedException();
+            if (tracking)
+            {
+                return this.Set<TEntity>();
+            }
+            return this.Set<TEntity>().AsNoTracking();
         }
 
         public int Truncate<TEntity>() where TEntity : class
         {
-            throw new NotImplementedException();
+           return  this.Database.ExecuteSqlCommand("TRUNCATE TABLE " + typeof(TEntity).Name);
         }
 
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
-            throw new NotImplementedException();
+            this.Entry<TEntity>(entity).State = EntityState.Modified;
         }
     }
 }
