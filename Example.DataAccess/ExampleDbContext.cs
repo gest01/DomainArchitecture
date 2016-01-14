@@ -8,7 +8,6 @@ namespace Example.DataAccess
 {
     internal class ExampleDbContext : DbContext, IDbContext
     {
-
         public ExampleDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)  {  }
 

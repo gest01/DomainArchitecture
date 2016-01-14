@@ -63,7 +63,7 @@ namespace Example.CrossCutting.Container.Default
         public void Register<TService>(TService instance)
         {
             if (instance == null)
-                throw new ArgumentNullException(nameof(instance)));
+                throw new ArgumentNullException(nameof(instance));
 
             Type serviceType = typeof(TService);
             if (_activators.ContainsKey(serviceType))
