@@ -5,46 +5,89 @@ namespace Example.CrossCutting.Container.Default
 {
     internal class DefaultContainer : IContainer
     {
-        private readonly IDictionary<String, IObjectActivator> _activators = new Dictionary<String, IObjectActivator>();
+        private readonly IDictionary<Type, IObjectActivator> _activators = new Dictionary<Type, IObjectActivator>();
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _activators.Clear();
         }
 
         public object GetService(Type serviceType)
         {
-            throw new NotImplementedException();
+            if (serviceType == null)
+                throw new ArgumentNullException(nameof(serviceType));
+
+            if (_activators.ContainsKey(serviceType))
+                return _activators[serviceType].CreateInstance();
+
+            return null;
         }
 
         public TService GetService<TService>()
         {
-            throw new NotImplementedException();
+            Type serviceType = typeof(TService);
+            object instance = this.GetService(serviceType);
+            if (instance != null)
+            {
+                return (TService)(instance);
+            }
+
+            return default(TService);
         }
 
         public void Register<TService>() where TService : new()
         {
-            throw new NotImplementedException();
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new TypeActivator() { Type = typeof(TService) });
         }
 
         public void Register<TService>(Func<TService> factory)
         {
-            throw new NotImplementedException();
+            if (factory == null)
+                throw new ArgumentNullException(nameof(factory));
+
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new FactoryActivator(() => factory()));
         }
 
         public void Register<TService>(TService instance)
         {
-            throw new NotImplementedException();
+            if (instance == null)
+                throw new ArgumentNullException(nameof(instance)));
+
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new FactoryActivator(() => { return instance; }   ));
         }
 
         public void Register<TService, TImplementation>() where TImplementation : TService
         {
-            throw new NotImplementedException();
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new TypeActivator() { Type = typeof(TImplementation) });
         }
 
         public void UnRegister(Type service)
         {
-            throw new NotImplementedException();
+            _activators.Remove(service);
         }
 
         public void UnRegister<TService>()
