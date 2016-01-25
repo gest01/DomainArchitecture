@@ -4,16 +4,20 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using Example.CrossCutting.DataAccess;
 
-namespace Example.DataAccess
+namespace Example.Infrastructure.Entity
 {
-    internal class ExampleDbContext : DbContext, IDbContext
+    [DbConfigurationType(typeof(EfDbContextConfiguration))]
+    internal class EfDbContext : DbContext, IDbContext
     {
-        public ExampleDbContext(string nameOrConnectionString)
-            :base(nameOrConnectionString)  {  }
+        public EfDbContext()
+            :this("name=EfDbContext") {  }
 
-        static ExampleDbContext()
+        public EfDbContext(string nameOrConnectionString)
+            :base(nameOrConnectionString)  { }
+
+        static EfDbContext()
         {
-            Database.SetInitializer<ExampleDbContext>(null);
+            Database.SetInitializer<EfDbContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -62,7 +66,7 @@ namespace Example.DataAccess
 
         public int Truncate<TEntity>() where TEntity : class
         {
-           return  this.Database.ExecuteSqlCommand("TRUNCATE TABLE " + typeof(TEntity).Name);
+            return this.Database.ExecuteSqlCommand("TRUNCATE TABLE " + typeof(TEntity).Name);
         }
 
         public void Update<TEntity>(TEntity entity) where TEntity : class

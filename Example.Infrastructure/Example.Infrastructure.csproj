@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3EBA8ABE-0732-4C68-8B66-7A5E3E38357D}</ProjectGuid>
+    <ProjectGuid>{BB3A9756-FF41-4834-B239-D6E3F607A964}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Example.DataAccess</RootNamespace>
-    <AssemblyName>Example.DataAccess</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>Example.Infrastructure</RootNamespace>
+    <AssemblyName>Example.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,9 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
+    <Compile Include="Entity\EfDbContextConfiguration.cs" />
+    <Compile Include="Entity\MyUnitOfWork.cs" />
+    <Compile Include="Entity\EfDbContext.cs" />
+    <Compile Include="Entity\EfRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

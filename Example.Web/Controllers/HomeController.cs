@@ -8,7 +8,6 @@ namespace Example.Web.Controllers
 {
     public class HomeController : MvcBaseController
     {
-        // GET: MyCustom
         public ActionResult Index()
         {
             return View();
