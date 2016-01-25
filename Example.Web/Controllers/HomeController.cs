@@ -17,5 +17,11 @@ namespace Example.Web.Controllers
         {
             throw new Exception("Test Exception"); 
         }
+
+        [HttpGet]
+        public ActionResult AngularApp()
+        {
+            return View();
+        }
     }
 }

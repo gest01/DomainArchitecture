@@ -1,0 +1,20 @@
+﻿
+
+<div ng-app="app" ng-controller="shellcontroller">
+
+    @{
+        ViewBag.Title = "AngularApp";
+    }
+
+    <h1> {{ title }} </h1>
+
+    <h2>AngularApp</h2>
+
+    @Html.ActionLink("Page not found", "ActionDoesNotExist")
+
+    @Html.ActionLink("Unhandled Exception", "UnhandledException")
+
+    @Html.ActionLink("Not authorized", "Index", "Admin")
+
+</div>
+

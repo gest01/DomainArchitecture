@@ -51,11 +51,9 @@ namespace Example.Web.Common
                 "~/Content/bootstrap.css"
             ));
 
-            bundles.Add(new ScriptBundle("~/bundles/scripts")
-                .Include(
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                      "~/Scripts/jquery-{version}.js",
-                     "~/Scripts/bootstrap.js")
-                );
+                     "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                      "~/Scripts/angular.js",

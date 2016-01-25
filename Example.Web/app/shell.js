@@ -13,6 +13,7 @@
 
         function activate() {
 
+            $scope.title = 'hello ng';
             $scope.isLoading = true;
             contextservice.getcontext().then(
                 function (context) {

@@ -37,22 +37,22 @@ namespace Example.Infrastructure.Entity
 
         public void Delete<TEntity>(TEntity entity) where TEntity : class
         {
-            this.Delete<TEntity>(entity);
+            this.Set<TEntity>().Remove(entity);
         }
 
         public TEntity Find<TEntity>(params object[] keyValues) where TEntity : class
         {
-            return this.Find<TEntity>(keyValues);
+            return this.Set<TEntity>().Find(keyValues);
         }
 
         public void Insert<TEntity>(TEntity entity) where TEntity : class
         {
-            this.Insert<TEntity>(entity);
+            this.Set<TEntity>().Add(entity);
         }
 
         public void InsertRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
         {
-            this.InsertRange<TEntity>(entities);
+            this.Set<TEntity>().AddRange(entities);
         }
 
         public IQueryable<TEntity> Query<TEntity>(bool tracking = true) where TEntity : class
@@ -61,6 +61,7 @@ namespace Example.Infrastructure.Entity
             {
                 return this.Set<TEntity>();
             }
+
             return this.Set<TEntity>().AsNoTracking();
         }
 

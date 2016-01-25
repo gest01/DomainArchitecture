@@ -3,11 +3,6 @@
 
     var app = angular.module('app');
 
-    // http://bartwullems.blogspot.ch/2014/10/angularjs-and-aspnet-mvc-isajaxrequest.html
-    app.config(['$httpProvider', function ($httpProvider) {
-        $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-    }]);
-
     app.config(["$provide", function ($provide) {
         var apiRoot = $("#apiRoot").attr("href");
         var mvcRoot = $("#mvcRoot").attr("href");
