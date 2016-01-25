@@ -6,8 +6,6 @@
         // Angular modules 
         'ngResource',
 
-        // Custom modules 
-
         // 3rd Party Modules
         'ui.bootstrap',
         'ui.router'

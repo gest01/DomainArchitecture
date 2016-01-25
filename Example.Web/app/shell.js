@@ -17,10 +17,10 @@
             $scope.isLoading = true;
             contextservice.getcontext().then(
                 function (context) {
-                	// context initialization
-                    common.usercontext = context.User;
-                    common.resourceStrings = context.Resouces;
-                    $scope.usercontext = common.usercontext;
+                    // context initialization
+                    //common.usercontext = context.User;
+                    //common.resourceStrings = context.Resouces;
+                    //$scope.usercontext = common.usercontext;
                     $scope.isLoading = false;
                 },
 

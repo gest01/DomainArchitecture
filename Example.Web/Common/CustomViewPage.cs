@@ -6,6 +6,16 @@ namespace Example.Web.Common
 {
     public abstract class CustomViewPage<TModel> : WebViewPage<TModel>
     {
+        public string WebRoot
+        {
+            get { return "/"; }
+        }
+
+        public string ApiRoot
+        {
+            get { return "/api"; }
+        }
+
         public String DisplayName
         {
             get

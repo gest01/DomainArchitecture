@@ -71,6 +71,7 @@
     <Compile Include="Common\ItemNotFoundActionResult.cs" />
     <Compile Include="Common\WebApi.cs" />
     <Compile Include="Controllers\ApiBaseController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

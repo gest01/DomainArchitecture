@@ -6,13 +6,4 @@ namespace Example.Domain.Repositories
     {
         void GetMyData();
     }
-
-
-    internal class MyDataRepository : IMyDataRepository
-    {
-        public void GetMyData()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

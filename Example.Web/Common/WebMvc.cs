@@ -48,7 +48,8 @@ namespace Example.Web.Common
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                "~/Content/bootstrap.css"
+                "~/Content/bootstrap.css",
+                "~/Content/ui-bootstrap-csp"
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(

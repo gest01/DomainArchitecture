@@ -53,6 +53,7 @@
     <Compile Include="Entity\MyUnitOfWork.cs" />
     <Compile Include="Entity\EfDbContext.cs" />
     <Compile Include="Entity\EfRepository.cs" />
+    <Compile Include="MyDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

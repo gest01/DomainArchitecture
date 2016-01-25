@@ -4,12 +4,13 @@
     var app = angular.module('app');
 
     app.config(["$provide", function ($provide) {
-        var apiRoot = $("#apiRoot").attr("href");
-        var mvcRoot = $("#mvcRoot").attr("href");
+
+        var apiRoot = angular.element("#apiRoot").attr("href")
+        var webRoot = angular.element("#webRoot").attr("href")
 
         $provide.constant('config', {
             apiRoot: apiRoot,
-            mvcRoot: mvcRoot
+            webRoot: webRoot
         });
     }]);
 
@@ -24,15 +25,17 @@
 
         return {
             responseError: function responseError(rejection) {
-        	    $rootScope.handleError(rejection);
-        		return $q.reject(rejection);
-        	}
+
+                $rootScope.handleError(rejection);
+
+                return $q.reject(rejection);
+            }
         };
     }
 
 
     app.config(['$httpProvider', function ($httpProvider) {
-    	$httpProvider.interceptors.push('errorHttpInterceptor');
+        $httpProvider.interceptors.push('errorHttpInterceptor');
     }]);
 
 

@@ -10,13 +10,17 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
+    <link rel="tag" id="apiRoot" href="@this.ApiRoot" />
+    <link rel="tag" id="webRoot" href="@this.WebRoot" />
+
+
     <title>Domain Architecture</title>
 
     @Styles.Render("~/bundles/css")
 
 </head>
 
-<body>
+<body ng-app="app">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -31,8 +35,8 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("Home")">Home</a></li>
-                    <li><a href="@Url.Action("AngularApp")">Angular App</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("AngularApp", "Home")">Angular App</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
