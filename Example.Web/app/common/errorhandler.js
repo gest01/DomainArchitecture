@@ -5,9 +5,9 @@
         .module('app')
         .factory('errorhandler', errorhandler);
 
-    errorhandler.$inject = ['common'];
+    errorhandler.$inject = ['$uibModal', 'common'];
 
-    function errorhandler(common) {
+    function errorhandler($uibModal, common) {
 
         var service = {
             handle: handle
@@ -47,22 +47,22 @@
                 errorMessage = error.data.MessageDetail; // Ist gesetzt wenn das IncludeErrorDetailPolicy-Property in der Api-Config entsprechend gesetzt ist
             }
 
-            //common.$log.error(errorMessage);
+            common.$log.error(errorMessage);
 
-            //var modalInstance = $modal.open({
-            //    animation: false,
-            //    templateUrl: common.config.mvcRoot + 'error/badrequestdialog',
-            //    controller: 'errordialogcontroller',
-            //    windowClass: 'warning-dialog',
-            //    resolve: {
-            //        error: function () {
-            //            return {
-            //                ErrorMessage: errorMessage,
-            //                ValidationErrors: validationerrors
-            //            };
-            //        }
-            //    }
-            //});
+            var modalInstance = $uibModal.open({
+                animation: false,
+                templateUrl: common.config.mvcRoot + 'error/badrequestdialog',
+                controller: 'errordialogcontroller',
+                windowClass: 'warning-dialog',
+                resolve: {
+                    error: function () {
+                        return {
+                            ErrorMessage: errorMessage,
+                            ValidationErrors: validationerrors
+                        };
+                    }
+                }
+            });
 
         }
 
@@ -76,17 +76,17 @@
                 common.$log.error(exception.Stacktrace);
             }
 
-            //var modalInstance = $modal.open({
-            //    animation: false,
-            //    templateUrl: common.config.mvcRoot + 'error/internalservererrordialog',
-            //    controller: 'errordialogcontroller',
-            //    windowClass: 'error-dialog',
-            //    resolve: {
-            //        error: function () {
-            //            return exception;
-            //        }
-            //    }
-            //});
+            var modalInstance = $uibModal.open({
+                animation: false,
+                templateUrl: common.config.mvcRoot + 'error/internalservererrordialog',
+                controller: 'errordialogcontroller',
+                windowClass: 'error-dialog',
+                resolve: {
+                    error: function () {
+                        return exception;
+                    }
+                }
+            });
         }
     }
 })();

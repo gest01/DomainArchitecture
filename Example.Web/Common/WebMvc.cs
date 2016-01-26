@@ -49,7 +49,7 @@ namespace Example.Web.Common
         {
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/ui-bootstrap-csp"
+                "~/Content/ui-bootstrap-csp.css"
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
