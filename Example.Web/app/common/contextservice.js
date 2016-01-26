@@ -17,7 +17,7 @@
 
 		// usercontext and resouces
         function getcontext() {
-            return $http.get(config.apiRoot + '/common').then(function (response) {
+            return $http.get(config.apiRoot + '/user/context').then(function (response) {
                 return response.data;
             });
         }

@@ -8,5 +8,12 @@ namespace Example.Api.Controllers
         {
             return Ok("Hello, World!");
         }
+
+        [HttpGet]
+        [Route("api/demo/exception")]
+        public IHttpActionResult ThrowException()
+        {
+            throw new System.Exception("Demo exception");
+        }
     }
 }

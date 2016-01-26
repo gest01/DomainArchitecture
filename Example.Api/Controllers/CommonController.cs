@@ -15,6 +15,7 @@ namespace Example.Api.Controllers
         }
 
         [HttpGet]
+        [Route("api/user/context")]
         public IHttpActionResult Get()
         {
             return Ok();
