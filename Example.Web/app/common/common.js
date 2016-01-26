@@ -10,7 +10,6 @@
     function common($filter, $rootScope, $state, $log, config) {
         
         var usercontext = {};
-        var resourceStrings = {};
 
         var service = {
 
@@ -22,7 +21,6 @@
 
             // Properties
             usercontext: usercontext,
-            resourceStrings: resourceStrings,
             config: config,
 
             // Functions

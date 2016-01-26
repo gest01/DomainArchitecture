@@ -5,22 +5,26 @@
         .module('app')
         .controller('shellcontroller', shellcontroller);
 
-    shellcontroller.$inject = ['$scope', 'common', 'contextservice', 'errorhandler'];
+    shellcontroller.$inject = ['$scope', 'common', 'contextservice', 'errorhandler', 'dataservice'];
 
-    function shellcontroller($scope, common, contextservice, errorhandler) {
+    function shellcontroller($scope, common, contextservice, errorhandler, dataservice) {
 
         activate();
 
         function activate() {
 
-            $scope.title = 'hello ng';
+            $scope.title = 'Angular App';
+            $scope.callPageNotFound = callPageNotFound;
+            $scope.callServerException = callServerException;
+            $scope.callNotAuthorized = callNotAuthorized;
+            $scope.callSuccess = callSuccess;
+            $scope.callBadRequest = callBadRequest;
+
             $scope.isLoading = true;
             contextservice.getcontext().then(
                 function (context) {
                     // context initialization
-                    //common.usercontext = context.User;
-                    //common.resourceStrings = context.Resouces;
-                    //$scope.usercontext = common.usercontext;
+                    $scope.usercontext = context;
                     $scope.isLoading = false;
                 },
 
@@ -32,6 +36,51 @@
         common.$rootScope.handleError = function (error) {
             errorhandler.handle(error);
         };
+
+        function callBadRequest() {
+            var myitem = {
+                Id: 1,
+                Name : 'hello'
+            };
+
+            dataservice.badRequest(myitem).then(function (result) {
+                $scope.result = result;
+            }, function (error) {
+                $scope.result = error;
+            });
+        }
+
+        function callSuccess() {
+            dataservice.getData().then(function (result) {
+                $scope.result = result;
+            }, function (error) {
+                $scope.result = error;
+            });
+        }
+
+        function callNotAuthorized() {
+            dataservice.notAuthorized().then(function (result) {
+                $scope.result = result;
+            }, function (error) {
+                $scope.result = error;
+            });
+        }
+
+        function callServerException() {
+            dataservice.serverException().then(function (result) {
+                $scope.result = result;
+            }, function (error) {
+                $scope.result = error;
+            });
+        }
+
+        function callPageNotFound() {
+            dataservice.pageNotfound().then(function (result) {
+                $scope.result = result;
+            }, function (error) {
+                $scope.result = error;
+            });
+        }
     }
 
 })();

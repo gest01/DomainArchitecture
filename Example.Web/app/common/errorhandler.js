@@ -51,7 +51,7 @@
 
             var modalInstance = $uibModal.open({
                 animation: false,
-                templateUrl: common.config.mvcRoot + 'error/badrequestdialog',
+                templateUrl: common.config.webRoot + 'error/badrequestdialog',
                 controller: 'errordialogcontroller',
                 windowClass: 'warning-dialog',
                 resolve: {
@@ -78,7 +78,7 @@
 
             var modalInstance = $uibModal.open({
                 animation: false,
-                templateUrl: common.config.mvcRoot + 'error/internalservererrordialog',
+                templateUrl: common.config.webRoot + 'error/internalservererrordialog',
                 controller: 'errordialogcontroller',
                 windowClass: 'error-dialog',
                 resolve: {

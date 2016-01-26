@@ -5,9 +5,9 @@
         .module('app')
         .controller('errordialogcontroller', errordialogcontroller);
 
-    errordialogcontroller.$inject = ['$scope', '$modalInstance', 'error'];
+    errordialogcontroller.$inject = ['$scope', '$uibModalInstance', 'error'];
 
-    function errordialogcontroller($scope, $modalInstance, error) {
+    function errordialogcontroller($scope, $uibModalInstance, error) {
 
         activate();
 
@@ -25,7 +25,7 @@
         }
 
         $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
     }
 })();

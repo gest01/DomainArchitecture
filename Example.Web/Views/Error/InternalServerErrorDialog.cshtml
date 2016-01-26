@@ -1,0 +1,16 @@
+﻿<div class="modal-header dialog-header-error">
+    <button class="close" type="button" ng-click="cancel()"> x </button>
+    <h4 class="modal-title text-danger"><i class="fa fa-warning"></i> Unhandled Exception </h4>
+</div>
+
+<div class="modal-body">
+
+    <h5>{{ errorMessage }}</h5>
+
+    <textarea class="form-control" rows="8">{{ stacktrace }}></textarea>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="cancel()">close</button>
+</div>
+

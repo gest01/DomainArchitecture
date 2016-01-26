@@ -34,7 +34,8 @@ namespace Example.Api.Common
 
                 var errorObject = new  {
                     ErrorMessage = Exception.Message,
-                    Stacktrace = Exception.ToString()
+                    Stacktrace = Exception.ToString(),
+                    DisplayMessage = "A critical error occured!"
                 };
 
                 HttpResponseMessage response = Request.CreateResponse<Object>(HttpStatusCode.InternalServerError, errorObject);

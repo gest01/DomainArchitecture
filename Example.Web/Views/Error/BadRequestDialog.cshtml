@@ -1,0 +1,21 @@
+﻿
+<div class="modal-header dialog-header-notify">
+    <button class="close" type="button" ng-click="cancel()"> x </button>
+    <h4 class="modal-title text-info"><i class="fa fa-exclamation-circle"></i> Bad Request / Not found </h4>
+</div>
+
+<div class="modal-body">
+    <h5>{{ errorMessage }}</h5>
+
+    <ul>
+        <li ng-repeat="validationerror in validationErrors">
+            {{ validationerror }}
+        </li>
+    </ul>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="cancel()">close</button>
+</div>
+

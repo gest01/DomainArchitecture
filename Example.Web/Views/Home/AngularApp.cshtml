@@ -2,14 +2,23 @@
 
 <div ng-controller="shellcontroller">
 
-    @{
-        ViewBag.Title = "AngularApp";
-    }
+    <h2> {{ title }} </h2>
 
-    <h1> {{ title }} </h1>
+    <hr />
 
-    <h2>AngularApp</h2>
+    <pre> {{ usercontext }} </pre>
 
+    <hr />
+
+    <a ng-click="callSuccess()" class="btn btn-success">Success</a>
+    <a ng-click="callPageNotFound()" class="btn btn-default">Page not found</a>
+    <a ng-click="callBadRequest()" class="btn btn-default">Bad Request</a>
+    <a ng-click="callServerException()" class="btn btn-danger">Unhandled Exception</a>
+    <a ng-click="callNotAuthorized()" class="btn btn-warning">Not authorized</a>
+
+    <hr />
+
+    <pre> {{ result }} </pre>
 
 </div>
 

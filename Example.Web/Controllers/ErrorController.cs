@@ -12,7 +12,7 @@ namespace Example.Web.Controllers
         public ActionResult UnhandledError()
         {
             Exception error = TempData[ErrorViewBuilder.TempData_Key_Exception] as Exception;
-            ErrorViewModel viewmodel = ErrorViewModel.CreateFromError(error, "TODO Unhandled Error Occured");
+            ErrorViewModel viewmodel = ErrorViewModel.CreateFromError(error, "Unhandled Error Occured");
             return View(viewmodel);
         }
 
@@ -20,8 +20,20 @@ namespace Example.Web.Controllers
         public ActionResult PageNotFound(String aspxerrorpath)
         {
             ErrorViewModel viewmodel = new ErrorViewModel();
-            viewmodel.ErrorText = String.Format(CultureInfo.CurrentCulture, "TODO Page {0} not found", aspxerrorpath);
+            viewmodel.ErrorText = String.Format(CultureInfo.CurrentCulture, "Page {0} not found", aspxerrorpath);
             return View(viewmodel);
+        }
+
+        [HttpGet]
+        public ActionResult InternalServerErrorDialog()
+        {
+            return PartialView();
+        }
+
+        [HttpGet]
+        public ActionResult BadRequestDialog()
+        {
+            return PartialView();
         }
     }
 }
