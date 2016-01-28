@@ -1,24 +1,24 @@
 ﻿
 
-<div ng-controller="shellcontroller">
+<div ng-controller="shellcontroller as shell">
 
-    <h2> {{ title }} </h2>
-
-    <hr />
-
-    <pre> {{ usercontext }} </pre>
+    <h2> {{ shell.title }} </h2>
 
     <hr />
 
-    <a ng-click="callSuccess()" class="btn btn-success">Success</a>
-    <a ng-click="callPageNotFound()" class="btn btn-default">Page not found</a>
-    <a ng-click="callBadRequest()" class="btn btn-default">Bad Request</a>
-    <a ng-click="callServerException()" class="btn btn-danger">Unhandled Exception</a>
-    <a ng-click="callNotAuthorized()" class="btn btn-warning">Not authorized</a>
+    <pre> {{ shell.usercontext }} </pre>
 
     <hr />
 
-    <pre> {{ result }} </pre>
+    <a ng-click="shell.callSuccess()" class="btn btn-success">Success</a>
+    <a ng-click="shell.callPageNotFound()" class="btn btn-default">Page not found</a>
+    <a ng-click="shell.callBadRequest()" class="btn btn-default">Bad Request</a>
+    <a ng-click="shell.callServerException()" class="btn btn-danger">Unhandled Exception</a>
+    <a ng-click="shell.callNotAuthorized()" class="btn btn-warning">Not authorized</a>
+
+    <hr />
+
+    <pre> {{ shell.result }} </pre>
 
 </div>
 

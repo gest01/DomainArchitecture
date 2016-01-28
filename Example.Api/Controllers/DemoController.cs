@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
 using Example.Api.Common;
@@ -29,23 +30,23 @@ namespace Example.Api.Controllers
         }
 
         [HttpGet]
-        [Route("api/demo/")]
+        [Route("api/demo/myitem")]
         public IHttpActionResult GetData()
         {
-            return Ok(new {
-             Data = new {
-                 Name = "Test",
-                 Id = DateTime.Now.Ticks,
-                 CoolValue = 2332
-             }
-            });
+            List<MyItem> items = new List<MyItem>();
+            for (int i = 0; i < 5; i++)
+            {
+                items.Add(new MyItem() { Id = i, Name = "Hello " + i, LastName = "World " + i });
+            }
+
+            return Ok(new { Items = items });
         }
 
         [HttpGet]
         [Route("api/demo/exception")]
         public IHttpActionResult ThrowException()
         {
-            throw new System.Exception("Demo exception");
+            throw new Exception("Demo exception");
         }
 
         [HttpGet]

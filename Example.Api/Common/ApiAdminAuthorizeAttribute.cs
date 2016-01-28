@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Web.Http;
 
 using Example.CrossCutting.Security;
@@ -18,7 +19,12 @@ namespace Example.Api.Common
 
         protected override void HandleUnauthorizedRequest(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            base.HandleUnauthorizedRequest(actionContext);
+            actionContext.Response = new HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+            {
+                Content = new StringContent("Unauthorized request " + actionContext.Request.RequestUri)
+            };
+
+            //base.HandleUnauthorizedRequest(actionContext);
         }
     }
 }

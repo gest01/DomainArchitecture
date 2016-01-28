@@ -63,7 +63,7 @@ namespace Example.Web.Common
                      "~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
-                .IncludeDirectory("~/app", "*.js", true));
+                .Include("~/app.js"));
         }
     }
 }
