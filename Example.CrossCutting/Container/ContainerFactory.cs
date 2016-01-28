@@ -19,6 +19,15 @@ namespace Example.CrossCutting.Container
             get { return GetContainer(DefaultContainerName); }
         }
 
+        public IContainer CreateContainer(String name)
+        {
+            IContainer container = CreateContainer();
+
+            RegisterContainer(name, container);
+
+            return container;
+        }
+
         public virtual void RegisterContainer(IContainer container)
         {
             if (container == null)

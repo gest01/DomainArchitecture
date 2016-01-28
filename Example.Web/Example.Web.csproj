@@ -205,6 +205,10 @@
       <Project>{e5efe6ad-75fa-4070-ac4f-ac97002b51fe}</Project>
       <Name>Example.CrossCutting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Example.Infrastructure\Example.Infrastructure.csproj">
+      <Project>{bb3a9756-ff41-4834-b239-d6e3f607a964}</Project>
+      <Name>Example.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

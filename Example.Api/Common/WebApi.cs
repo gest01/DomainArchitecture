@@ -4,6 +4,7 @@ using Newtonsoft.Json.Serialization;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Example.CrossCutting;
 
 namespace Example.Api.Common
 {

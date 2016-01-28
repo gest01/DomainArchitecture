@@ -1,6 +1,10 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Example.CrossCutting;
+using Example.CrossCutting.Container;
+using Example.Application;
+using Example.Infrastructure;
 
 namespace Example.Web.Common
 {
@@ -14,6 +18,11 @@ namespace Example.Web.Common
 
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
+
+            // Self made IoC Container :-) --> Better Use Automapper
+            IContainer containerRoot = ObjectServices.Container.CreateContainer("MyContainer");
+            containerRoot.RegisterApplicationServices();
+            containerRoot.RegisterInfrastructure();
         }
     }
 

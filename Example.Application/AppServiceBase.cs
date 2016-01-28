@@ -10,9 +10,14 @@ namespace Example.Application
         protected AppServiceBase()
         {
             Logger = ObjectServices.Logger.CreateLogger(GetType());
+            Mapper = new ObjectMapper();
         }
 
-        public IPrincipal User
+
+        protected ILogger Logger { get; private set; }
+        protected ObjectMapper Mapper { get; private set; }
+
+        protected IPrincipal User
         {
             get
             {
@@ -20,6 +25,6 @@ namespace Example.Application
             }
         }
 
-        public ILogger Logger { get; private set; }
+        
     }
 }

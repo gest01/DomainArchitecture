@@ -69,6 +69,7 @@
     <Compile Include="Common\ApiExceptionLogger.cs" />
     <Compile Include="Common\ApiGlobalExceptionHandler.cs" />
     <Compile Include="Common\ApiRequestLoggerFilter.cs" />
+    <Compile Include="Common\CustomDependencyResolver.cs" />
     <Compile Include="Common\ItemNotFoundActionResult.cs" />
     <Compile Include="Common\WebApi.cs" />
     <Compile Include="Controllers\ApiBaseController.cs" />

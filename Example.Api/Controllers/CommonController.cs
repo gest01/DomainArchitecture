@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using Example.Application;
 
 namespace Example.Api.Controllers
 {
@@ -7,7 +8,7 @@ namespace Example.Api.Controllers
     {
         [HttpGet]
         [Route("api/user/context")]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get( )
         {
             return Ok(new
             {
