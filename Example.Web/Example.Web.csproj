@@ -206,9 +206,7 @@
       <Name>Example.CrossCutting</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Admin\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="App\App.Module.ts" />
     <TypeScriptCompile Include="App\Shared\ErrorDialog.Controller.ts" />

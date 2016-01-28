@@ -1,23 +1,7 @@
 ﻿@model Example.Web.Models.ErrorViewModel
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<h1>Unhandled Error</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
+<pre> @Model.ErrorText </pre>
 
-        <h1>Unhandled Error</h1>
-
-        <b> @Model.ErrorText </b>
-
-    </div>
-</body>
-</html>

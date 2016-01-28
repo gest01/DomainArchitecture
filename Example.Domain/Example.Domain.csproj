@@ -48,7 +48,9 @@
     <Compile Include="Repositories\MyDataRepository.cs" />
     <Compile Include="ValueObjects\UserInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Example.CrossCutting\Example.CrossCutting.csproj">
       <Project>{e5efe6ad-75fa-4070-ac4f-ac97002b51fe}</Project>
