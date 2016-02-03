@@ -1,0 +1,25 @@
+﻿@model Example.Web.Models.DataItemViewModel
+
+<table class="table table-condensed table-striped table-hover">
+
+    <thead>
+        <tr>
+            <td></td>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Lastname</td>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.Data)
+    {
+        <tr>
+            <td>@Html.ActionLink("Edit", "Edit", new { Id = item.Id })</td>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.LastName</td>
+        </tr>
+    }
+
+</table>
+

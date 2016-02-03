@@ -1,0 +1,19 @@
+﻿@model Example.Web.Models.DataItemViewModel
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(f => f.Item.Name)
+        @Html.TextBoxFor(f => f.Item.Name, new { @class = "form-control", placeholder = "Email" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Item.LastName)
+        @Html.TextBoxFor(model => model.Item.LastName, new { @class = "form-control", placeholder = "LastName" })
+        @Html.ValidationMessageFor(model => model.Item.LastName)
+    </div>
+
+    <a href="@Url.Action("Index", "DataItem")" class="btn btn-default">Back</a>
+    <button type="submit" class="btn btn-primary">Save DataItem</button>
+}

@@ -8,7 +8,7 @@ using Example.Domain.Entities;
 
 namespace Example.Application
 {
-    internal class ObjectMapper
+    public class ObjectMapper
     {
         public MyDemoDTO MapToDto(MyEntity entity)
         {
@@ -22,12 +22,14 @@ namespace Example.Application
             return dto;
         }
 
-        public MyEntity MapToEntity(MyDemoDTO dto)
+        public MyEntity MapToEntity(MyEntity entity, MyDemoDTO dto)
         {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
             if (dto == null)
                 throw new ArgumentNullException(nameof(dto));
 
-            MyEntity entity = new MyEntity();
             entity.Id = dto.Id;
             entity.LastName = dto.LastName;
             entity.Name = dto.Name;

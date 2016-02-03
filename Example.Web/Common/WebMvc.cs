@@ -63,6 +63,8 @@ namespace Example.Web.Common
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                      "~/Scripts/jquery-{version}.js",
+                     "~/Scripts/jquery.validate.js",
+                     "~/Scripts/jquery.validate.unobtrusive.js",
                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(

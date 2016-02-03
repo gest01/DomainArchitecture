@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using Example.Domain.Entities;
 
 namespace Example.Domain.Repositories
 {
     public interface IMyDataRepository
     {
-        void GetMyData();
+        IEnumerable<MyEntity> GetMyData();
+
+        MyEntity Find(int id);
+
+        void UpdateEntity(MyEntity entity);
     }
 }

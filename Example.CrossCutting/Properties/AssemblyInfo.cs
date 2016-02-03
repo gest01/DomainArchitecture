@@ -5,5 +5,4 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Example.CrossCutting")]
 [assembly: AssemblyDescription("")]
-[assembly: ComVisible(false)]
 [assembly: Guid("e5efe6ad-75fa-4070-ac4f-ac97002b51fe")]
