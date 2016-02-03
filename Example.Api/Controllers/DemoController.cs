@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
 using Example.Api.Common;
+using Example.Application;
+using Example.Application.DTO;
 
 namespace Example.Api.Controllers
 {
-    public class MyItem
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-    }
-
     public class DemoController : ApiBaseController
     {
+        private readonly IMyAppService _appservice;
+
+        public DemoController()
+        {
+            _appservice = new MyAppService();
+        }
+
         [HttpPost]
         [Route("api/demo/myitem/")]
-        public IHttpActionResult UpdateItem(MyItem item)
+        public IHttpActionResult UpdateItem(MyDemoDTO item)
         {
             if (ModelState.IsValid)
             {
@@ -33,13 +31,7 @@ namespace Example.Api.Controllers
         [Route("api/demo/myitem")]
         public IHttpActionResult GetData()
         {
-            List<MyItem> items = new List<MyItem>();
-            for (int i = 0; i < 5; i++)
-            {
-                items.Add(new MyItem() { Id = i, Name = "Hello " + i, LastName = "World " + i });
-            }
-
-            return Ok(new { Items = items });
+            return Ok(new { Items =  _appservice.GetDataItems() });
         }
 
         [HttpGet]
@@ -55,6 +47,16 @@ namespace Example.Api.Controllers
         public IHttpActionResult NotAuthorized()
         {
             return Ok();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _appservice.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
     }
 }

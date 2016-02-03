@@ -9,7 +9,7 @@ namespace Example.Application
 {
     public interface IMyAppService : IDisposable
     {
-        IEnumerable<MyDemoDTO> GetData();
+        IEnumerable<MyDemoDTO> GetDataItems();
 
         MyDemoDTO GetItem(int id);
         void UpdateItem(MyDemoDTO item);
@@ -54,7 +54,7 @@ namespace Example.Application
             _repository.UpdateEntity(entity);
         }
 
-        public IEnumerable<MyDemoDTO> GetData()
+        public IEnumerable<MyDemoDTO> GetDataItems()
         {
             return _repository.GetMyData().Select(f => Mapper.MapToDto(f));
         }

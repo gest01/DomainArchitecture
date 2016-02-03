@@ -21,7 +21,7 @@ namespace Example.Web.Controllers
         public ActionResult Index()
         {
             DataItemViewModel model = new DataItemViewModel();
-            model.Data = _appservice.GetData();
+            model.Data = _appservice.GetDataItems();
             return View(model);
         }
 
