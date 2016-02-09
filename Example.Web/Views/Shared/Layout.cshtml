@@ -20,7 +20,7 @@
 
 </head>
 
-<body ng-app="app">
+<body ng-app="App">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -31,12 +31,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Example.DomainArchitecture</a>
+                <a class="navbar-brand" href="/">Example.DomainArchitecture</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li><a href="@Url.Action("AngularApp", "Home")">Angular App</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a ui-sref="home" >Angular App</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -50,7 +50,10 @@
 
     <div class="container body-content" style="margin-top:80px">
 
-        @RenderBody()
+        <div ui-view>
+            @RenderBody()
+        </div>
+
         <hr />
         <footer>
             <p>&copy; 2016 - Example.DomainArchitecture Template Project</p>

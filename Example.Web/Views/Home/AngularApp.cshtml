@@ -11,6 +11,9 @@
     <hr />
 
     <a ng-click="shell.callSuccess()" class="btn btn-success">Success</a>
+
+    <a ui-sref="mydata" class="btn btn-success">MyData</a>
+
     <a ng-click="shell.callPageNotFound()" class="btn btn-default">Route not found</a>
     <a ng-click="shell.callBadRequest()" class="btn btn-default">Bad Request</a>
     <a ng-click="shell.callServerException()" class="btn btn-danger">Unhandled Exception</a>
@@ -21,4 +24,5 @@
     <pre> {{ shell.result }} </pre>
 
 </div>
+
 

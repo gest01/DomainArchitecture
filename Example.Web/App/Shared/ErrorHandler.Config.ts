@@ -16,7 +16,7 @@
     }
 
 
-    angular.module("app").config(['$httpProvider', function ($httpProvider: ng.IHttpProvider) {
+    angular.module("App").config(['$httpProvider', function ($httpProvider: ng.IHttpProvider) {
         $httpProvider.interceptors.push(setupErrorHandler);
     }]);
 }

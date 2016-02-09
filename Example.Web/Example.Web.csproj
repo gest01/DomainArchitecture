@@ -166,6 +166,9 @@
     <Content Include="Views\DataItem\Index.cshtml" />
     <Content Include="Views\Shared\ItemNotFound.cshtml" />
     <Content Include="Views\DataItem\Edit.cshtml" />
+    <Content Include="Views\MyData\Index.cshtml" />
+    <Content Include="Views\MyData\Items.cshtml" />
+    <Content Include="Views\MyData\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -175,7 +178,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
@@ -194,6 +199,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\MvcBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,9 +229,14 @@
   <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="App\App.Module.ts" />
+    <TypeScriptCompile Include="App\Modules\MyData\Config\StateProvider.ts" />
+    <TypeScriptCompile Include="App\Modules\MyData\Controllers\MyData.controller.ts" />
+    <TypeScriptCompile Include="App\Modules\MyData\Services\MyData.factory.ts" />
+    <TypeScriptCompile Include="App\Modules\MyData\_MyData.module.ts" />
     <TypeScriptCompile Include="App\Shared\ErrorDialog.Controller.ts" />
     <TypeScriptCompile Include="App\Shared\ErrorHandler.Service.ts" />
     <TypeScriptCompile Include="App\Shared\ErrorHandler.Config.ts" />
+    <TypeScriptCompile Include="App\Shared\StateProvider.ts" />
     <TypeScriptCompile Include="App\Shared\UserContext.Service.ts" />
     <TypeScriptCompile Include="App\DataService.Service.ts" />
     <TypeScriptCompile Include="App\HttpConfig.ts" />

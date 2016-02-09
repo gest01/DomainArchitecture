@@ -34,5 +34,5 @@ module App.Shared {
         }
     }
 
-    angular.module("app").controller("ErrorDialogController", ErrorDialogController);
+    angular.module("App").controller("ErrorDialogController", ErrorDialogController);
 }

@@ -20,7 +20,7 @@ namespace Example.Web.Controllers
         [HttpGet]
         public ActionResult AngularApp()
         {
-            return View();
+            return PartialView();
         }
     }
 }

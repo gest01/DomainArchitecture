@@ -74,5 +74,5 @@ module App {
         }
     }
 
-    angular.module("app").controller("shellcontroller", ShellController);
+    angular.module("App").controller("shellcontroller", ShellController);
 }

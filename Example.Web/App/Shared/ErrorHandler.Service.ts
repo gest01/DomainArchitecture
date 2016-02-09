@@ -11,7 +11,7 @@
 
         handleError(error: any) {
 
-            // HACK : Unable to inject IModalService through construcotr --> circular dependency
+            // HACK : Unable to inject IModalService through constructor --> circular dependency
             var modal = this.$injector.get<ng.ui.bootstrap.IModalService>("$uibModal");
 
             if (error.status === 400 || /* Bad Request */ 
@@ -82,7 +82,7 @@
         }
     }
 
-    angular.module("app").service("ErrorHandler", ErrorHandler);
+    angular.module("App").service("ErrorHandler", ErrorHandler);
 
 
 }

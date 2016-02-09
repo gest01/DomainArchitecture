@@ -23,5 +23,5 @@
 
     }
 
-    angular.module("app").service("HttpConfig", HttpConfig);
+    angular.module("App").service("HttpConfig", HttpConfig);
 }

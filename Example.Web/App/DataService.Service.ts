@@ -60,5 +60,5 @@
     }
 
 
-    angular.module("app").factory("DataService", DataService);
+    angular.module("App").factory("DataService", DataService);
 }

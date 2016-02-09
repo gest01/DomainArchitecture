@@ -27,5 +27,5 @@
         }
     }
 
-    angular.module("app").service("UserContextService", UserContextService);
+    angular.module("App").service("UserContextService", UserContextService);
 }
