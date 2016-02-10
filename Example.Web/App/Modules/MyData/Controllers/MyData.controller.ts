@@ -18,6 +18,10 @@ module App.Modules.MyData.Controllers {
                 });
             }
         }
+
+        submitForm(valid : boolean) {
+            console.error(valid);
+        }
     }
 
     angular.module("App.MyData").controller("MyDataController", MyDataController);

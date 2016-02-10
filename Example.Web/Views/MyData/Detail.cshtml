@@ -1,2 +1,21 @@
 ﻿
-<h1>DETAIL</h1>
+<form name="myform" ng-submit="MyDataController.submitForm(myform.$valid)" novalidate style="margin:5px">
+
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" class="form-control" readonly value="{{ MyDataController.Item.Id }}">
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : myform.name.$invalid }">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" ng-model="MyDataController.Item.Name" placeholder="Name">
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : myform.lastname.$invalid }">
+        <label for="lastname">LastName</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" ng-model="MyDataController.Item.LastName" ng-required="true"  placeholder="LastName">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Data Item</button>
+    <a ui-sref="mydata" class="btn btn-default"> Back to list </a>
+</form>
