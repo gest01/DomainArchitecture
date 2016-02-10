@@ -1,4 +1,4 @@
-/// <reference path="../../../app.module.ts" />
+/// <reference path="../_mydata.module.ts" />
 module App.Modules.MyData.Config  {
     "use strict";
 

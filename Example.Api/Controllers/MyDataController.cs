@@ -29,7 +29,9 @@ namespace Example.Api.Controllers
         [Route("api/mydata/items")]
         public IHttpActionResult GetItems()
         {
-            return Ok(_appservice.GetDataItems());
+            return Ok( new {
+                Items = _appservice.GetDataItems()
+            });
         }
 
         protected override void Dispose(bool disposing)

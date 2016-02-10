@@ -4,14 +4,19 @@ module App.Modules.MyData.Controllers {
 
     export class MyDataController {
 
-        //static $inject: string[] = [""];
+        static $inject: string[] = ["MyDataService", "$stateParams"];
 
-        constructor() {
-            this.activate();
-        }
+        Item: Core.MyDataItem;
 
-        activate() {
+        constructor(private service: App.Modules.MyData.Services.IMyDataService, private $stateParams: ng.ui.IStateParamsService) {
 
+            if ($stateParams['Id']) {
+                var id = parseInt($stateParams['Id']);
+
+                this.service.getDataItem(id).success(f => {
+                    this.Item = f;
+                });
+            }
         }
     }
 
