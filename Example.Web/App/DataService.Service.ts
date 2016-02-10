@@ -1,24 +1,12 @@
 ﻿module App {
     "use strict";
 
-    export class MyDataResult {
-        Items: Array<MyDataItem>;
-    }
-
-
-    export class MyDataItem {
-        Id: number;
-        Name: string;
-        LastName: string;
-    }
-
-
     export interface IDataService {
         pageNotfound: () => ng.IHttpPromise<any>;
         serverException: () => ng.IHttpPromise<any>;
         notAuthorized: () => ng.IHttpPromise<any>;
-        badRequest: (item: MyDataItem) => ng.IHttpPromise<any>;
-        getData: () => ng.IHttpPromise<MyDataResult>;
+        badRequest: (item: Core.MyDataItem) => ng.IHttpPromise<any>;
+        getData: () => ng.IHttpPromise<Core.MyDataResult>;
     }
 
     DataService.$inject = ["$http", "HttpConfig"];
@@ -34,11 +22,11 @@
 
         return service;
 
-        function getData(): ng.IHttpPromise<MyDataResult> {
+        function getData(): ng.IHttpPromise<Core.MyDataResult> {
             return $http.get(config.toApiUrl('/demo/myitem'));
         }
 
-        function badRequest(item: MyDataItem): ng.IHttpPromise<any> {
+        function badRequest(item: Core.MyDataItem): ng.IHttpPromise<any> {
             return $http.post(config.toApiUrl('/demo/myitem'), item);
         }
 

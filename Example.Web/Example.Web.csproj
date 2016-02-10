@@ -229,6 +229,8 @@
   <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="App\App.Module.ts" />
+    <TypeScriptCompile Include="App\Core\MyDataItem.ts" />
+    <TypeScriptCompile Include="App\Core\MyDataResult.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\Config\StateProvider.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\Controllers\MyData.controller.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\Services\MyData.factory.ts" />

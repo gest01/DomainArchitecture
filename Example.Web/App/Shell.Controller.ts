@@ -34,7 +34,7 @@ module App {
 
         callBadRequest()
         {
-            var item = new MyDataItem();
+            var item = new Core.MyDataItem();
             item.Id = 2342;
             item.Name = "Hello World";
 

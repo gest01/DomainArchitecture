@@ -2,20 +2,26 @@
     "use strict";
 
     export interface IMyDataService {
-        getData: () => string;
+        getDataItems: () => ng.IHttpPromise<Core.MyDataResult>;
+        getDataItem: (id: number) => ng.IHttpPromise<Core.MyDataItem>
     }
 
-    MyDataService.$inject = ["$http"];
+    MyDataService.$inject = ["$http", "HttpConfig"];
 
-    function MyDataService($http: ng.IHttpService): IMyDataService {
+    function MyDataService($http: ng.IHttpService, config: App.HttpConfig): IMyDataService {
         var service: IMyDataService = {
-            getData: getData
+            getDataItems: getDataItems,
+            getDataItem: getDataItem
         };
 
         return service;
 
-        function getData() {
-            return "";
+        function getDataItem(id: number): ng.IHttpPromise<Core.MyDataItem> {
+            return $http.get(config.toApiUrl('/mydata/' + id));
+        }
+
+        function getDataItems(): ng.IHttpPromise<Core.MyDataResult> {
+            return $http.get(config.toApiUrl('/mydata/items'));
         }
     }
 
