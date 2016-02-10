@@ -233,6 +233,7 @@
     <TypeScriptCompile Include="App\Core\MyDataResult.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\Config\StateProvider.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\Controllers\MyData.controller.ts" />
+    <TypeScriptCompile Include="App\Modules\MyData\Controllers\MyData.Items.controller.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\Services\MyData.factory.ts" />
     <TypeScriptCompile Include="App\Modules\MyData\_MyData.module.ts" />
     <TypeScriptCompile Include="App\Shared\ErrorDialog.Controller.ts" />

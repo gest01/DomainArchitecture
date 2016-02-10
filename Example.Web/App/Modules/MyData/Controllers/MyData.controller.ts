@@ -1,11 +1,12 @@
+/// <reference path="../_mydata.module.ts" />
 module App.Modules.MyData.Controllers {
     "use strict";
 
     export class MyDataController {
 
-        static $inject: string[] = ["MyDataService"];
+        //static $inject: string[] = [""];
 
-        constructor(private service: App.Modules.MyData.Services.IMyDataService) {
+        constructor() {
             this.activate();
         }
 

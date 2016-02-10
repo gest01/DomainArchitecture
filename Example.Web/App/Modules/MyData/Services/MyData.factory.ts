@@ -1,4 +1,5 @@
-﻿module App.Modules.MyData.Services {
+﻿/// <reference path="../_mydata.module.ts" />
+module App.Modules.MyData.Services {
     "use strict";
 
     export interface IMyDataService {

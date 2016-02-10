@@ -17,8 +17,8 @@ module App.Modules.MyData.Config  {
                     },
                     "@mydata": {
                         templateUrl: "/mydata/items",
-                        controller: Modules.MyData.Controllers.MyDataController,
-                        controllerAs: "MyDataController"
+                        controller: Modules.MyData.Controllers.MyDataItemsController,
+                        controllerAs: "MyDataItemsController"
                     }
                 }
             })
