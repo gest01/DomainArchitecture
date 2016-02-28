@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Http;
-using Example.Application;
 
 namespace Example.Api.Controllers
 {
