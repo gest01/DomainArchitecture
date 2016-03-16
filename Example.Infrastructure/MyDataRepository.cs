@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Example.CrossCutting.DataAccess;
 using Example.Domain.Entities;
 using Example.Domain.Repositories;
 
@@ -9,10 +10,11 @@ namespace Example.Infrastructure
     internal class MyDataRepository : IMyDataRepository
     {
         private readonly static IEnumerable<MyEntity> _data = CreateDummyData();
+        private readonly IDbContext _context;
 
-        public MyDataRepository()
+        public MyDataRepository(IDbContext context)
         {
-
+            _context = context;
         }
 
         public IEnumerable<MyEntity> GetMyData()

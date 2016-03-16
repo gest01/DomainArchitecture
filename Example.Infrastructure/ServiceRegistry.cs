@@ -1,6 +1,8 @@
 ﻿using System;
 using Example.CrossCutting.Container;
+using Example.CrossCutting.DataAccess;
 using Example.Domain.Repositories;
+using Example.Infrastructure.Entity;
 
 namespace Example.Infrastructure
 {
@@ -12,6 +14,7 @@ namespace Example.Infrastructure
                 throw new ArgumentNullException(nameof(container));
 
             container.Register<IMyDataRepository, MyDataRepository>();
+            container.Register<IDbContext, EfDbContext>();
 
             return container;
         }
