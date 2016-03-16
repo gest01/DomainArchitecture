@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Example.Application;
 using Example.Web.Models;
 
@@ -12,9 +8,9 @@ namespace Example.Web.Controllers
     {
         private readonly IMyAppService _appservice;
 
-        public DataItemController()
+        public DataItemController(IMyAppService appservice)
         {
-            _appservice = new MyAppService();
+            _appservice = appservice;
         }
 
         [HttpGet]

@@ -5,11 +5,11 @@ namespace Example.Api.Controllers
 {
     public class MyDataController : ApiBaseController
     {
-        private readonly MyAppService _appservice;
+        private readonly IMyAppService _appservice;
 
-        public MyDataController()
+        public MyDataController(IMyAppService appservice)
         {
-            _appservice = new MyAppService();
+            _appservice = appservice;
         }
 
         [HttpGet]

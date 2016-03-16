@@ -11,8 +11,10 @@ using System.Runtime.InteropServices;
     [assembly: AssemblyConfiguration("Release")]
 #endif
 
+[assembly: InternalsVisibleTo("Example.Tests")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyCompany("Example")]
 [assembly: AssemblyProduct("Domain Oriented Architecture")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+

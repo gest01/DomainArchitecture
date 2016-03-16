@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Example.CrossCutting.Container.Default
 {
     internal class DefaultContainer : IContainer
     {
-        private readonly IDictionary<Type, IObjectActivator> _activators = new Dictionary<Type, IObjectActivator>();
+        private readonly IDictionary<Type, IServiceActivator> _activators = new Dictionary<Type, IServiceActivator>();
 
         public void Dispose()
         {
@@ -18,7 +19,26 @@ namespace Example.CrossCutting.Container.Default
                 throw new ArgumentNullException(nameof(serviceType));
 
             if (_activators.ContainsKey(serviceType))
-                return _activators[serviceType].CreateInstance();
+            {
+                IServiceActivator activator = _activators[serviceType];
+                if (activator is TypeActivator)
+                {
+                    Type concreteType = ((TypeActivator)activator).Type;
+                    ConstructorInfo defaultctor = concreteType.GetConstructor(Type.EmptyTypes);
+                    if (defaultctor != null)
+                    {
+                        var value = activator.CreateInstance();
+                        return value;
+                    }
+
+                    ServiceResolver resolver = new ServiceResolver(this);
+                    return resolver.CreateInstance(concreteType);
+                }
+                else
+                {
+                    return activator.CreateInstance();
+                }
+            }
 
             return null;
         }
@@ -46,20 +66,6 @@ namespace Example.CrossCutting.Container.Default
             _activators.Add(serviceType, new TypeActivator() { Type = typeof(TService) });
         }
 
-        public void Register<TService>(Func<TService> factory)
-        {
-            if (factory == null)
-                throw new ArgumentNullException(nameof(factory));
-
-            Type serviceType = typeof(TService);
-            if (_activators.ContainsKey(serviceType))
-            {
-                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
-            }
-
-            _activators.Add(serviceType, new FactoryActivator(() => factory()));
-        }
-
         public void Register<TService>(TService instance)
         {
             if (instance == null)
@@ -71,7 +77,7 @@ namespace Example.CrossCutting.Container.Default
                 throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
             }
 
-            _activators.Add(serviceType, new FactoryActivator(() => { return instance; }   ));
+            _activators.Add(serviceType, new InstanceActivator() { Instance = instance });
         }
 
         public void Register<TService, TImplementation>() where TImplementation : TService
@@ -95,33 +101,29 @@ namespace Example.CrossCutting.Container.Default
             UnRegister(typeof(TService));
         }
 
-        private interface IObjectActivator
+        private interface IServiceActivator
         {
-            Object CreateInstance();
+            Object CreateInstance(params Object[] args);
         }
 
-        private class TypeActivator : IObjectActivator
+        private class TypeActivator : IServiceActivator
         {
             public Type Type { get; set; }
 
-            public object CreateInstance()
+            public object CreateInstance(params Object[] args)
             {
-                return Activator.CreateInstance(Type);
+                return Activator.CreateInstance(Type, args);
             }
         }
 
-        private class FactoryActivator : IObjectActivator
+
+        private class InstanceActivator : IServiceActivator
         {
-            private Func<Object> _factory;
+            public Object Instance { get; set; }
 
-            public FactoryActivator(Func<Object> factory)
+            public object CreateInstance(params object[] args)
             {
-                _factory = factory;
-            }
-
-            public object CreateInstance()
-            {
-                return _factory();
+                return Instance;                   
             }
         }
     }

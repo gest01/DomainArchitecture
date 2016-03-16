@@ -15,15 +15,9 @@ namespace Example.Application
         void UpdateItem(MyDemoDTO item);
     }
 
-    public class MyAppService : AppServiceBase, IMyAppService
+    internal class MyAppService : AppServiceBase, IMyAppService
     {
         private readonly IMyDataRepository _repository;
-
-        public MyAppService()
-            : this(ServiceRegistry.Container.MyDataRepository)
-        {
-
-        }
 
         public MyAppService(IMyDataRepository repository)
         {

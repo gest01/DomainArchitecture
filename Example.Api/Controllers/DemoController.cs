@@ -10,9 +10,9 @@ namespace Example.Api.Controllers
     {
         private readonly IMyAppService _appservice;
 
-        public DemoController()
+        public DemoController(IMyAppService appservice)
         {
-            _appservice = new MyAppService();
+            _appservice = appservice;
         }
 
         [HttpPost]

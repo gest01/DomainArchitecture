@@ -6,9 +6,14 @@ using Example.Domain.Repositories;
 
 namespace Example.Infrastructure
 {
-    public class MyDataRepository : IMyDataRepository
+    internal class MyDataRepository : IMyDataRepository
     {
         private readonly static IEnumerable<MyEntity> _data = CreateDummyData();
+
+        public MyDataRepository()
+        {
+
+        }
 
         public IEnumerable<MyEntity> GetMyData()
         {

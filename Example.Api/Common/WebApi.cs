@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Example.CrossCutting.Container;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -9,16 +10,24 @@ namespace Example.Api.Common
 {
     public static class WebApi
     {
-        public static void Configure()
+        public static void Configure(IContainer compositeRoot)
         {
-            GlobalConfiguration.Configure(ConfigureApi);
+            HttpConfiguration configuration = GlobalConfiguration.Configuration;
+
+            ConfigureApi(configuration, compositeRoot);
+
+            configuration.EnsureInitialized();
         }
 
-        private static void ConfigureApi(HttpConfiguration config)
+        private static void ConfigureApi(HttpConfiguration config, IContainer compositeRoot)
         {
+            
             // Web API configuration and services
             config.Services.Add(typeof(IExceptionLogger), new ApiExceptionLogger());
             config.Services.Replace(typeof(IExceptionHandler), new ApiGlobalExceptionHandler());
+
+            // Register my poor-mans injection :-)
+            config.UseCustomControllerActivator(compositeRoot);
 
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 

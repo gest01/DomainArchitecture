@@ -186,6 +186,7 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Common\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Common\CustomControllerFactory.cs" />
     <Compile Include="Common\CustomViewPage.cs" />
     <Compile Include="Common\ErrorViewBuilder.cs" />
     <Compile Include="Common\MvcAuthenticationFilter.cs" />

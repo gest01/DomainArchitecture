@@ -1,28 +1,23 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Example.CrossCutting;
 using Example.CrossCutting.Container;
-using Example.Application;
-using Example.Infrastructure;
 
 namespace Example.Web.Common
 {
     internal static class WebMvc
     {
-        public static void Configure()
+        public static void Configure(IContainer compositeRoot)
         {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // Register my poor-mans injection :-)
+            ControllerBuilder.Current.SetControllerFactory(new CustomControllerFactory(compositeRoot));
+
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
-
-            // Self made IoC Container :-) --> Better Use Automapper
-            IContainer containerRoot = ObjectServices.Container.CreateContainer("MyContainer");
-            containerRoot.RegisterApplicationServices();
-            containerRoot.RegisterInfrastructure();
         }
     }
 

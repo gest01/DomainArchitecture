@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Web;
 using Example.Api.Common;
+using Example.Application;
 using Example.CrossCutting;
+using Example.CrossCutting.Container;
 using Example.CrossCutting.Logging;
+using Example.Infrastructure;
 using Example.Web.Common;
 
 namespace Example.Web
@@ -16,11 +19,16 @@ namespace Example.Web
             _log.Info("*** Application Start  ***");
             _log.Info("*** Version {0} / BuildDate {1} ***", EnvironmentUtil.Version, EnvironmentUtil.BuildDate);
 
+            // Self made IoC Container :-) --> Better Use Automapper
+            IContainer compositeRoot = ObjectServices.Container.CreateContainer("MyContainer");
+            compositeRoot.RegisterApplicationServices();
+            compositeRoot.RegisterInfrastructure();
+
             // Configure API
-            WebApi.Configure();
+            WebApi.Configure(compositeRoot);
 
             // Configure MVC
-            WebMvc.Configure();
+            WebMvc.Configure(compositeRoot);
         }
 
 #if DEBUG

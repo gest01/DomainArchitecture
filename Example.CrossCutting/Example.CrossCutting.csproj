@@ -53,6 +53,7 @@
     <Compile Include="Container\Default\DefaultContainer.cs" />
     <Compile Include="Container\Default\DefaultContainerFactory.cs" />
     <Compile Include="Container\IContainer.cs" />
+    <Compile Include="Container\ServiceResolver.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="EnvironmentUtil.cs" />
     <Compile Include="Logging\LogLevels.cs" />
