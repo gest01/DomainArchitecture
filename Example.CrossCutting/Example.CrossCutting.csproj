@@ -50,6 +50,10 @@
     <Compile Include="Caching\Default\DefaultCacheFactory.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="Container\ContainerFactory.cs" />
+    <Compile Include="Container\Default\Activation\FactoryActivator.cs" />
+    <Compile Include="Container\Default\Activation\InstanceActivator.cs" />
+    <Compile Include="Container\Default\Activation\IServiceActivator.cs" />
+    <Compile Include="Container\Default\Activation\TypeActivator.cs" />
     <Compile Include="Container\Default\DefaultContainer.cs" />
     <Compile Include="Container\Default\DefaultContainerFactory.cs" />
     <Compile Include="Container\IContainer.cs" />

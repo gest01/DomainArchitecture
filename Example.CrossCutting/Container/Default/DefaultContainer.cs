@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Example.CrossCutting.Container.Default.Activation;
 
 namespace Example.CrossCutting.Container.Default
 {
@@ -55,6 +56,21 @@ namespace Example.CrossCutting.Container.Default
             return default(TService);
         }
 
+        public void Register<TService>(Func<TService> factory)
+        {
+            if (factory == null)
+                throw new ArgumentNullException(nameof(factory));
+
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new FactoryActivator() { Factory = () => factory() });
+
+        }
+
         public void Register<TService>() where TService : new()
         {
             Type serviceType = typeof(TService);
@@ -99,32 +115,6 @@ namespace Example.CrossCutting.Container.Default
         public void UnRegister<TService>()
         {
             UnRegister(typeof(TService));
-        }
-
-        private interface IServiceActivator
-        {
-            Object CreateInstance(params Object[] args);
-        }
-
-        private class TypeActivator : IServiceActivator
-        {
-            public Type Type { get; set; }
-
-            public object CreateInstance(params Object[] args)
-            {
-                return Activator.CreateInstance(Type, args);
-            }
-        }
-
-
-        private class InstanceActivator : IServiceActivator
-        {
-            public Object Instance { get; set; }
-
-            public object CreateInstance(params object[] args)
-            {
-                return Instance;                   
-            }
         }
     }
 }
