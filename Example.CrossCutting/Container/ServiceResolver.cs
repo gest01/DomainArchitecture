@@ -16,6 +16,9 @@ namespace Example.CrossCutting.Container
 
         public Object CreateInstance(Type type)
         {
+            if (type == null)
+                throw new ArgumentNullException(nameof(type));
+
             ConstructorInfo defaultConstructor = type.GetConstructor(Type.EmptyTypes);
             if (defaultConstructor != null)
             {

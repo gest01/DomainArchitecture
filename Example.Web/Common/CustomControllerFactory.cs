@@ -27,10 +27,8 @@ namespace Example.Web.Common
             {
                 return base.GetControllerInstance(requestContext, controllerType);
             }
-            else
-            {
-                return (IController)_resolver.CreateInstance(controllerType);
-            }
+
+            return (IController)_resolver.CreateInstance(controllerType);
         }
     }
 }
