@@ -9,9 +9,26 @@ namespace Example.CrossCutting.Container.Default
     {
         private readonly IDictionary<Type, IServiceActivator> _activators = new Dictionary<Type, IServiceActivator>();
 
-        public void Dispose()
+        public void RegisterSingleton<TService>()
         {
-            _activators.Clear();
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new SingletonActivator() { Type = typeof(TService) });
+        }
+
+        public void RegisterSingleton<TService, TImplementation>() where TImplementation : TService
+        {
+            Type serviceType = typeof(TService);
+            if (_activators.ContainsKey(serviceType))
+            {
+                throw new ArgumentException(string.Format("Type {0} already registered!", serviceType));
+            }
+
+            _activators.Add(serviceType, new SingletonActivator() { Type = typeof(TImplementation) });
         }
 
         public object GetService(Type serviceType)
@@ -115,6 +132,11 @@ namespace Example.CrossCutting.Container.Default
         public void UnRegister<TService>()
         {
             UnRegister(typeof(TService));
+        }
+
+        public void Dispose()
+        {
+            _activators.Clear();
         }
     }
 }

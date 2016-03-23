@@ -9,6 +9,9 @@ namespace Example.CrossCutting.Container
         void Register<TService>() where TService : new();
         void Register<TService, TImplementation>() where TImplementation : TService;
 
+        void RegisterSingleton<TService>();
+        void RegisterSingleton<TService, TImplementation>() where TImplementation : TService;
+
         void UnRegister<TService>();
         void UnRegister(Type service);
 
