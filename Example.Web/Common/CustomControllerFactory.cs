@@ -23,7 +23,14 @@ namespace Example.Web.Common
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            return (IController)_resolver.CreateInstance(controllerType);
+            if (controllerType == null)
+            {
+                return base.GetControllerInstance(requestContext, controllerType);
+            }
+            else
+            {
+                return (IController)_resolver.CreateInstance(controllerType);
+            }
         }
     }
 }
