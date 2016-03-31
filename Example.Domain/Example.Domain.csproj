@@ -45,9 +45,15 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="DataDomainService.cs" />
     <Compile Include="Entities\MyEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IMyDataRepository.cs" />
+    <Compile Include="Security\CustomClaims.cs" />
+    <Compile Include="Security\Permissions.cs" />
+    <Compile Include="Security\PrincipalExtensions.cs" />
+    <Compile Include="Security\PrincipalFactory.cs" />
+    <Compile Include="ServiceRegistry.cs" />
     <Compile Include="ValueObjects\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup />

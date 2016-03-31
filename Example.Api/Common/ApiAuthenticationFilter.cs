@@ -3,9 +3,9 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
-using Example.Application;
 using Example.CrossCutting;
 using Example.CrossCutting.Logging;
+using Example.Domain.Security;
 
 namespace Example.Api.Common
 {

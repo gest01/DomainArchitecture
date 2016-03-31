@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Example.CrossCutting.Security
+namespace Example.Domain.Security
 {
     public static class Permissions
     {

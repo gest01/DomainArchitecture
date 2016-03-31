@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Example.CrossCutting.Security
+namespace Example.Domain.Security
 {
     /// <summary>
     /// Definiert die spezifischen Claims

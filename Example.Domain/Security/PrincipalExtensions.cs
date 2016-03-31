@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 
-namespace Example.CrossCutting.Security
+namespace Example.Domain.Security
 {
     public static class PrincipalExtensions
     {
@@ -80,5 +80,4 @@ namespace Example.CrossCutting.Security
             throw new ArgumentException("Unable to read ClaimType '" + claimType + "' from principal!");
         }
     }
-
 }

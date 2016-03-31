@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 
-using Example.CrossCutting.Security;
+using Example.Domain.Security;
 
 namespace Example.Api.Common
 {

@@ -49,7 +49,6 @@
     <Compile Include="DTO\MyDemoDTO.cs" />
     <Compile Include="ObjectMapper.cs" />
     <Compile Include="MyAppService.cs" />
-    <Compile Include="PrincipalFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceRegistry.cs" />
   </ItemGroup>

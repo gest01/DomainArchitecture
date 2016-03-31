@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using Example.Domain.Security;
 
 namespace Example.Api.Controllers
 {
@@ -13,7 +14,7 @@ namespace Example.Api.Controllers
             {
                 User = new
                 {
-                    DisplayName = User.Identity.Name,
+                    DisplayName = User.GetDisplayName(),
                     Id = DateTime.Now.Ticks
                 }
             });

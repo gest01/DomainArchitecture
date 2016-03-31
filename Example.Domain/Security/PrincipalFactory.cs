@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Security.Principal;
-using Example.CrossCutting.Security;
 using Example.Domain.ValueObjects;
 
-namespace Example.Application
+namespace Example.Domain.Security
 {
     public sealed class PrincipalFactory
     {
@@ -43,8 +42,8 @@ namespace Example.Application
 
             return new UserInfo() {
                 UserId = userId,
-                DisplayName = "Hello World",
-                Email  = "hello@world.com",
+                DisplayName = "John Wayne",
+                Email  = "john.wayne@world.com",
                 Language = "en"
                 
             };

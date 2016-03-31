@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using Example.Application.DTO;
-using Example.CrossCutting.Security;
-using Example.Domain.Repositories;
+using Example.Domain;
+using Example.Domain.Entities;
+using Example.Domain.Security;
 
 namespace Example.Application
 {
@@ -17,11 +18,11 @@ namespace Example.Application
 
     internal class MyAppService : AppServiceBase, IMyAppService
     {
-        private readonly IMyDataRepository _repository;
+        private readonly IDataDomainService _domainservice;
 
-        public MyAppService(IMyDataRepository repository)
+        public MyAppService(IDataDomainService domainservice)
         {
-            _repository = repository;
+            _domainservice = domainservice;
         }
 
         public void MethodNeedsAdminPermissions()
@@ -37,7 +38,7 @@ namespace Example.Application
 
             Logger.Info("Updating MyDemoDTO..Id={0}", dto.Id);
 
-            var entity = _repository.Find(dto.Id);
+            MyEntity entity = _domainservice.FindEntity(dto.Id);
             if (entity == null)
             {
                 throw new ArgumentException("Entity with Id " + dto.Id + " not found!");
@@ -45,17 +46,17 @@ namespace Example.Application
 
             Mapper.MapToEntity(entity, dto);
 
-            _repository.UpdateEntity(entity);
+            _domainservice.Update(entity);
         }
 
         public IEnumerable<MyDemoDTO> GetDataItems()
         {
-            return _repository.GetMyData().Select(f => Mapper.MapToDto(f));
+            return _domainservice.GetEntities().Select(f => Mapper.MapToDto(f));
         }
 
         public MyDemoDTO GetItem(int id)
         {
-            var item = _repository.Find(id);
+            MyEntity item = _domainservice.FindEntity(id);
             if (item != null)
             {
                 return Mapper.MapToDto(item);

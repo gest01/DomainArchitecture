@@ -4,9 +4,9 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
-using Example.Application;
 using Example.CrossCutting;
 using Example.CrossCutting.Logging;
+using Example.Domain.Security;
 
 namespace Example.Web.Common
 {

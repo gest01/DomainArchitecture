@@ -87,6 +87,10 @@
       <Project>{e5efe6ad-75fa-4070-ac4f-ac97002b51fe}</Project>
       <Name>Example.CrossCutting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Example.Domain\Example.Domain.csproj">
+      <Project>{e938bb17-aa9c-40df-899d-7eadbf477d68}</Project>
+      <Name>Example.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

@@ -5,6 +5,7 @@ using Example.Application;
 using Example.CrossCutting;
 using Example.CrossCutting.Container;
 using Example.CrossCutting.Logging;
+using Example.Domain;
 using Example.Infrastructure;
 using Example.Web.Common;
 
@@ -23,6 +24,7 @@ namespace Example.Web
             IContainer compositeRoot = ObjectServices.Container.CreateContainer("MyContainer");
             compositeRoot.RegisterApplicationServices();
             compositeRoot.RegisterInfrastructure();
+            compositeRoot.RegisterDomainServices();
 
             // Configure API
             WebApi.Configure(compositeRoot);

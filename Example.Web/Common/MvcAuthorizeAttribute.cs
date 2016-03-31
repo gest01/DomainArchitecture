@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using Example.CrossCutting.Security;
+using Example.Domain.Security;
 
 namespace Example.Web.Common
 {
