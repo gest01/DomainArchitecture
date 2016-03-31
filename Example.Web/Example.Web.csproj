@@ -168,6 +168,7 @@
     <Content Include="Views\MyData\Index.cshtml" />
     <Content Include="Views\MyData\Items.cshtml" />
     <Content Include="Views\MyData\Detail.cshtml" />
+    <Content Include="Views\DataItem\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

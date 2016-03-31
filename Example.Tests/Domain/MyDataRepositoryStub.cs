@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Example.Domain.Entities;
 using Example.Domain.Repositories;
@@ -12,6 +13,11 @@ namespace Example.Tests.Domain
         public MyDataRepositoryStub()
         {
             _entities = new List<MyEntity>();
+        }
+
+        public void DeleteEntity(MyEntity entity)
+        {
+            throw new NotImplementedException();
         }
 
         public MyEntity Find(int id)

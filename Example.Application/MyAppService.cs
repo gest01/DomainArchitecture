@@ -14,6 +14,7 @@ namespace Example.Application
 
         MyDemoDTO GetItem(int id);
         void UpdateItem(MyDemoDTO item);
+        void DeleteItem(MyDemoDTO item);
     }
 
     internal class MyAppService : AppServiceBase, IMyAppService
@@ -29,6 +30,23 @@ namespace Example.Application
         {
             if (!User.IsAdmin())
                 throw new Exception("User is not authorized!");
+        }
+
+
+        public void DeleteItem(MyDemoDTO dto)
+        {
+            if (dto == null)
+                throw new ArgumentNullException(nameof(dto));
+
+            Logger.Info("Deleting MyDemoDTO..Id={0}", dto.Id);
+
+            MyEntity entity = _domainservice.FindEntity(dto.Id);
+            if (entity == null)
+            {
+                throw new ArgumentException("Entity with Id " + dto.Id + " not found!");
+            }
+
+            _domainservice.Delete(entity);
         }
 
         public void UpdateItem(MyDemoDTO dto)

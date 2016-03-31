@@ -10,6 +10,7 @@ namespace Example.Domain
         MyEntity FindEntity(int id);
 
         void Update(MyEntity entity);
+        void Delete(MyEntity entity);
 
         IEnumerable<MyEntity> GetEntities();
     }
@@ -40,5 +41,14 @@ namespace Example.Domain
 
             _repository.UpdateEntity(entity);
         }
+
+        public void Delete(MyEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            _repository.DeleteEntity(entity);
+        }
+
     }
 }

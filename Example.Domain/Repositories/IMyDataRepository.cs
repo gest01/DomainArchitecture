@@ -11,5 +11,6 @@ namespace Example.Domain.Repositories
         MyEntity Find(int id);
 
         void UpdateEntity(MyEntity entity);
+        void DeleteEntity(MyEntity entity);
     }
 }

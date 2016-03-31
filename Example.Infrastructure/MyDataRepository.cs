@@ -26,6 +26,16 @@ namespace Example.Infrastructure
             return _context.RepositoryFor<MyEntity>().Find(id);
         }
 
+
+        public void DeleteEntity(MyEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            _context.RepositoryFor<MyEntity>().Delete(entity);
+            _context.Commit();
+        }
+
         public void UpdateEntity(MyEntity entity)
         {
             if (entity == null)

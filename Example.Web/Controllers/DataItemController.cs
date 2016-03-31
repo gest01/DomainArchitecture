@@ -55,6 +55,34 @@ namespace Example.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var item = _appservice.GetItem(id);
+            if (item == null)
+            {
+                return ItemNotFound("DataItem with id {0} does not exists!", id);
+            }
+
+            DataItemViewModel model = new DataItemViewModel();
+            model.Item = item;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(FormCollection form, int id)
+        {
+            var item = _appservice.GetItem(id);
+            if (item == null)
+            {
+                return ItemNotFound("DataItem with id {0} does not exists!", id);
+            }
+
+            _appservice.DeleteItem(item);
+
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

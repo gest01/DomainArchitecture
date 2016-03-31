@@ -1,0 +1,13 @@
+﻿@model Example.Web.Models.DataItemViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(f => f.Item.Id)
+
+    <b> Are you sure you want delete data item @Model.Item.Id ? </b>
+
+    <br />    <br />
+    <a href="@Url.Action("Index", "DataItem")" class="btn btn-default">Back</a>
+    <button type="submit" class="btn btn-danger">Yes, delete item</button>
+}
+
