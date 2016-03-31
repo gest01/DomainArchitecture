@@ -9,22 +9,21 @@ namespace Example.Infrastructure
 {
     internal class MyDataRepository : IMyDataRepository
     {
-        private readonly static IEnumerable<MyEntity> _data = CreateDummyData();
-        private readonly IDbContext _context;
+        private readonly IUnitOfWork _context;
 
-        public MyDataRepository(IDbContext context)
+        public MyDataRepository(IUnitOfWork context)
         {
             _context = context;
         }
 
         public IEnumerable<MyEntity> GetMyData()
         {
-            return _data;
+            return _context.RepositoryFor<MyEntity>().Query();
         }
 
         public MyEntity Find(int id)
         {
-            return _data.SingleOrDefault(f => f.Id == id);
+            return _context.RepositoryFor<MyEntity>().Find(id);
         }
 
         public void UpdateEntity(MyEntity entity)
@@ -32,19 +31,8 @@ namespace Example.Infrastructure
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            // Nothing todo in demo app :-)
-        }
-
-        private static IEnumerable<MyEntity> CreateDummyData()
-        {
-            List<MyEntity> entities = new List<MyEntity>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                entities.Add(new MyEntity() { Id = i, LastName = "Lastname " + i, Name = "Name " + i  });
-            }
-
-            return entities;
+            _context.RepositoryFor<MyEntity>().Update(entity);
+            _context.Commit();
         }
     }
 }

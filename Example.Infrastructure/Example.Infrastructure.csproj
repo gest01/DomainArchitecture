@@ -53,9 +53,13 @@
       <Link>SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Entity\EfDbContextConfiguration.cs" />
-    <Compile Include="Entity\MyUnitOfWork.cs" />
+    <Compile Include="Entity\EfUnitOfWork.cs" />
     <Compile Include="Entity\EfDbContext.cs" />
     <Compile Include="Entity\EfRepository.cs" />
+    <Compile Include="Entity\InMemory\InMemoryDbContext.cs" />
+    <Compile Include="Entity\InMemory\InMemoryRepository.cs" />
+    <Compile Include="Entity\InMemory\InMemoryUnitOfWork.cs" />
+    <Compile Include="Entity\InMemory\MemoryStore.cs" />
     <Compile Include="MyDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceRegistry.cs" />
@@ -74,6 +78,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

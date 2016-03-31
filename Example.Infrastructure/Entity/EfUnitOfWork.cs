@@ -2,12 +2,12 @@
 
 namespace Example.Infrastructure.Entity
 {
-    internal class MyUnitOfWork : UnitOfWork
+    internal class EfUnitOfWork : UnitOfWork
     {
-        public MyUnitOfWork()
+        public EfUnitOfWork()
             :this(new EfDbContext()) { }
 
-        public MyUnitOfWork(IDbContext context)
+        public EfUnitOfWork(IDbContext context)
             : base(context)
         { }
 
