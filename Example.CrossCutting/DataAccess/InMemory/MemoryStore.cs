@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Example.Infrastructure.Entity.InMemory
+namespace Example.CrossCutting.DataAccess.InMemory
 {
-    internal class MemoryStore
+    public class MemoryStore
     {
         private Dictionary<Type, List<Object>> _items = new Dictionary<Type, List<object>>();
 

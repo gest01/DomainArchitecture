@@ -3,7 +3,6 @@ using Example.CrossCutting.Container;
 using Example.CrossCutting.DataAccess;
 using Example.Domain.Repositories;
 using Example.Infrastructure.Entity;
-using Example.Infrastructure.Entity.InMemory;
 
 namespace Example.Infrastructure
 {
@@ -17,7 +16,7 @@ namespace Example.Infrastructure
             container.Register<IMyDataRepository, MyDataRepository>();
 
             //container.Register<IUnitOfWork, EfUnitOfWork>(); // Real EF Db context
-            container.Register<IUnitOfWork, InMemoryUnitOfWork>(); // InMemory Store for demo 
+            container.Register<IUnitOfWork, DemoUnitOfWork>(); // InMemory Store for demo 
 
             return container;
         }

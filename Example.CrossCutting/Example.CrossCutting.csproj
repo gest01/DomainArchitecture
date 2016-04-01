@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +60,10 @@
     <Compile Include="Container\Default\DefaultContainerFactory.cs" />
     <Compile Include="Container\IContainer.cs" />
     <Compile Include="Container\ServiceResolver.cs" />
+    <Compile Include="DataAccess\InMemory\InMemoryDbContext.cs" />
+    <Compile Include="DataAccess\InMemory\InMemoryRepository.cs" />
+    <Compile Include="DataAccess\InMemory\InMemoryUnitOfWork.cs" />
+    <Compile Include="DataAccess\InMemory\MemoryStore.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="EnvironmentUtil.cs" />
     <Compile Include="Logging\LogLevels.cs" />

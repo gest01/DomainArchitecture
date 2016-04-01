@@ -1,7 +1,9 @@
 ﻿@model Example.Web.Models.DataItemViewModel
 
 @using (Html.BeginForm())
-{
+{    
+    @Html.HiddenFor(f => f.Item.Id)
+
     <div class="form-group">
         @Html.LabelFor(f => f.Item.Name)
         @Html.TextBoxFor(f => f.Item.Name, new { @class = "form-control", placeholder = "Email" })

@@ -1,6 +1,4 @@
-﻿using Example.CrossCutting.DataAccess;
-
-namespace Example.Infrastructure.Entity.InMemory
+﻿namespace Example.CrossCutting.DataAccess.InMemory
 {
     internal class InMemoryRepository<TEntity> : Repository<TEntity> where TEntity : class
     {
