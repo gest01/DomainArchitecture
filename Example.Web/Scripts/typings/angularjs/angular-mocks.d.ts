@@ -47,7 +47,10 @@ declare namespace angular {
         inject: IInjectStatic
 
         // see https://docs.angularjs.org/api/ngMock/function/angular.mock.module
-        module(...modules: any[]): any;
+        module: {
+          (...modules: any[]): any;
+          sharedInjector(): void;
+        }
 
         // see https://docs.angularjs.org/api/ngMock/type/angular.mock.TzDate
         TzDate(offset: number, timestamp: number): Date;
@@ -96,6 +99,29 @@ declare namespace angular {
     interface ILogCall {
         logs: string[];
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // ControllerService mock
+    // see https://docs.angularjs.org/api/ngMock/service/$controller
+    // This interface extends http://docs.angularjs.org/api/ng.$controller
+    ///////////////////////////////////////////////////////////////////////////
+    interface IControllerService {
+      // Although the documentation doesn't state this, locals are optional
+      <T>(controllerConstructor: new (...args: any[]) => T, locals?: any, bindings?: any): T;
+      <T>(controllerConstructor: Function, locals?: any, bindings?: any): T;
+      <T>(controllerName: string, locals?: any, bindings?: any): T;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // ComponentControllerService
+    // see https://docs.angularjs.org/api/ngMock/service/$componentController
+    ///////////////////////////////////////////////////////////////////////////
+    interface IComponentControllerService {
+      // TBinding is an interface exposed by a component as per John Papa's style guide
+      // https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#accessible-members-up-top
+      <T, TBinding>(componentName: string, locals: { $scope: IScope, [key: string]: any }, bindings?: TBinding, ident?: string): T;
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////
     // HttpBackendService
