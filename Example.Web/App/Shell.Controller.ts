@@ -8,7 +8,6 @@ module App {
         result: any;
 
         static $inject: string[] = ["DataService", "UserContextService"];
-
         constructor(private dataservice: App.IDataService, private user : App.Shared.IUserContextService) {
             this.activate();
         }
