@@ -1,5 +1,6 @@
+/*eslint-disable no-unused-vars*/
 /*!
- * jQuery JavaScript Library v3.1.1
+ * jQuery JavaScript Library v3.0.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -9,7 +10,7 @@
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2016-09-22T22:30Z
+ * Date: 2016-06-09T18:02Z
  */
 ( function( global, factory ) {
 
@@ -81,14 +82,11 @@ var support = {};
 		script.text = code;
 		doc.head.appendChild( script ).parentNode.removeChild( script );
 	}
-/* global Symbol */
-// Defining this global in .eslintrc.json would create a danger of using the global
-// unguarded in another place, it seems safer to define global only for this module
 
 
 
 var
-	version = "3.1.1",
+	version = "3.0.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -3864,8 +3862,7 @@ var readyList = jQuery.Deferred();
 
 jQuery.fn.ready = function( fn ) {
 
-	readyList
-		.then( fn )
+	readyList.then( fn );
 
 		// Wrap jQuery.readyException in a function so that the lookup
 		// happens at the time of error handling instead of callback
